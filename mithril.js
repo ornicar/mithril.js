@@ -99,13 +99,9 @@ var m = (function app(window, undefined) {
 		});
 	}
 	// This function was causing deopts in Chrome.
+	// Well no longer
 	function dataToString(data) {
-		//data.toString() might throw or return null if data is the return value of Console.log in Firefox (behavior depends on version)
-		try {
-			if (data == null || data.toString() == null) return "";
-		} catch (e) {
-			return "";
-		}
+		if (data == null || data.toString() == null) return "";
 		return data;
 	}
 	// This function was causing deopts in Chrome.
