@@ -101,8 +101,10 @@ var m = (function app(window, undefined) {
 	// This function was causing deopts in Chrome.
 	// Well no longer
 	function dataToString(data) {
-		if (data == null || data.toString() == null) return "";
-		return data;
+    if (data == null) return '';
+    if (typeof data === 'object') return data;
+    if (data.toString() == null) return ""; // prevent recursion error on FF
+    return data;
 	}
 	// This function was causing deopts in Chrome.
 	function injectTextNode(parentElement, first, index, data) {
